@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		0BEF4DF125CD86D300B6FE8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF4DF025CD86D300B6FE8C /* AppDelegate.swift */; };
 		0BEF4DF325CD86D300B6FE8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF4DF225CD86D300B6FE8C /* SceneDelegate.swift */; };
-		0BEF4DF525CD86D300B6FE8C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF4DF425CD86D300B6FE8C /* ViewController.swift */; };
+		0BEF4DF525CD86D300B6FE8C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF4DF425CD86D300B6FE8C /* MainViewController.swift */; };
 		0BEF4DF825CD86D300B6FE8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BEF4DF625CD86D300B6FE8C /* Main.storyboard */; };
 		0BEF4DFB25CD86D300B6FE8C /* ClickUpdate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF4DF925CD86D300B6FE8C /* ClickUpdate.xcdatamodeld */; };
 		0BEF4DFD25CD86D400B6FE8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BEF4DFC25CD86D400B6FE8C /* Assets.xcassets */; };
 		0BEF4E0025CD86D400B6FE8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BEF4DFE25CD86D400B6FE8C /* LaunchScreen.storyboard */; };
 		0BEF4E0B25CD86D500B6FE8C /* ClickUpdateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF4E0A25CD86D500B6FE8C /* ClickUpdateTests.swift */; };
 		0BEF4E1625CD86D500B6FE8C /* ClickUpdateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF4E1525CD86D500B6FE8C /* ClickUpdateUITests.swift */; };
+		0BEF4E3325CD894300B6FE8C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BEF4E3225CD894300B6FE8C /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,7 @@
 		0BEF4DED25CD86D300B6FE8C /* ClickUpdate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClickUpdate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BEF4DF025CD86D300B6FE8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BEF4DF225CD86D300B6FE8C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0BEF4DF425CD86D300B6FE8C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0BEF4DF425CD86D300B6FE8C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0BEF4DF725CD86D300B6FE8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BEF4DFA25CD86D300B6FE8C /* ClickUpdate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClickUpdate.xcdatamodel; sourceTree = "<group>"; };
 		0BEF4DFC25CD86D400B6FE8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +52,8 @@
 		0BEF4E1125CD86D500B6FE8C /* ClickUpdateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickUpdateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BEF4E1525CD86D500B6FE8C /* ClickUpdateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickUpdateUITests.swift; sourceTree = "<group>"; };
 		0BEF4E1725CD86D500B6FE8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BEF4E2D25CD893E00B6FE8C /* ClickUpdate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClickUpdate.entitlements; sourceTree = "<group>"; };
+		0BEF4E3225CD894300B6FE8C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BEF4E3325CD894300B6FE8C /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +89,7 @@
 				0BEF4E0925CD86D500B6FE8C /* ClickUpdateTests */,
 				0BEF4E1425CD86D500B6FE8C /* ClickUpdateUITests */,
 				0BEF4DEE25CD86D300B6FE8C /* Products */,
+				0BEF4E3125CD894300B6FE8C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +106,13 @@
 		0BEF4DEF25CD86D300B6FE8C /* ClickUpdate */ = {
 			isa = PBXGroup;
 			children = (
+				0BEF4E2D25CD893E00B6FE8C /* ClickUpdate.entitlements */,
+				0BEF4E2625CD881000B6FE8C /* Model */,
+				0BEF4E2725CD881900B6FE8C /* View */,
+				0BEF4E2925CD883900B6FE8C /* Controller */,
+				0BEF4E2825CD882300B6FE8C /* ViewModel */,
 				0BEF4DF025CD86D300B6FE8C /* AppDelegate.swift */,
 				0BEF4DF225CD86D300B6FE8C /* SceneDelegate.swift */,
-				0BEF4DF425CD86D300B6FE8C /* ViewController.swift */,
-				0BEF4DF625CD86D300B6FE8C /* Main.storyboard */,
 				0BEF4DFC25CD86D400B6FE8C /* Assets.xcassets */,
 				0BEF4DFE25CD86D400B6FE8C /* LaunchScreen.storyboard */,
 				0BEF4E0125CD86D400B6FE8C /* Info.plist */,
@@ -129,6 +137,44 @@
 				0BEF4E1725CD86D500B6FE8C /* Info.plist */,
 			);
 			path = ClickUpdateUITests;
+			sourceTree = "<group>";
+		};
+		0BEF4E2625CD881000B6FE8C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0BEF4E2725CD881900B6FE8C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0BEF4DF625CD86D300B6FE8C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0BEF4E2825CD882300B6FE8C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0BEF4E2925CD883900B6FE8C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0BEF4DF425CD86D300B6FE8C /* MainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0BEF4E3125CD894300B6FE8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0BEF4E3225CD894300B6FE8C /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BEF4DF525CD86D300B6FE8C /* ViewController.swift in Sources */,
+				0BEF4DF525CD86D300B6FE8C /* MainViewController.swift in Sources */,
 				0BEF4DFB25CD86D300B6FE8C /* ClickUpdate.xcdatamodeld in Sources */,
 				0BEF4DF125CD86D300B6FE8C /* AppDelegate.swift in Sources */,
 				0BEF4DF325CD86D300B6FE8C /* SceneDelegate.swift in Sources */,
@@ -440,6 +486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ClickUpdate/ClickUpdate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JCC32S9S9V;
 				INFOPLIST_FILE = ClickUpdate/Info.plist;
@@ -459,6 +506,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ClickUpdate/ClickUpdate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JCC32S9S9V;
 				INFOPLIST_FILE = ClickUpdate/Info.plist;
