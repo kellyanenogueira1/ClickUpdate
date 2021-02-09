@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "F13578DE-3F9C-43C7-A518-445C0E6A871F"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E9968314-D9CA-4AE7-95E3-6CAC06FE3B3B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ClickUpdate/ViewModel/MainViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "getUserName(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06FD8F83-0D44-4F58-9D2B-95E5CC74349C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ClickUpdate/ViewModel/MainViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getUserName(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "06FD8F83-0D44-4F58-9D2B-95E5CC74349C - abadbbd69cccaa6e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ClickUpdate.MainViewModel.getUserName(completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "ClickUpdate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kellyanenogueira/Documents/Projetos/ClickUpdate/ClickUpdate/ViewModel/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "38">
+               </Location>
+               <Location
+                  uuid = "06FD8F83-0D44-4F58-9D2B-95E5CC74349C - 9fdb6d945bffefac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.CKApplicationPermissionStatus, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ClickUpdate.MainViewModel.getUserName(completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "ClickUpdate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kellyanenogueira/Documents/Projetos/ClickUpdate/ClickUpdate/ViewModel/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "218">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

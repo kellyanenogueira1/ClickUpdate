@@ -7,15 +7,22 @@
 
 import SwiftUI
 
+class CardViewModel: ObservableObject {
+    @Published var phoneNumber1: String = ""
+    @Published var ddd1: String = ""
+    @Published var phoneNumber2: String = ""
+    @Published var ddd2: String = ""
+}
+
 struct CardView: View {
     
     var card: Card
-    //var dismissAction: (() -> Void)
     
-    @State private var phoneNumber1: String = ""
-    @State private var ddd1: String = ""
-    @State private var phoneNumber2: String = ""
-    @State private var ddd2: String = ""
+    @ObservedObject var viewModel: CardViewModel
+
+    var dismissAction: () -> Void
+    var saveAction: () -> Void
+    
 
     var body: some View {
         VStack {
@@ -35,23 +42,22 @@ struct CardView: View {
                 .padding()
             if card.id == 4 {
                 HStack {
-                    TextField("(DDD)", text: $ddd1)
+                    TextField("(DDD)", text: $viewModel.ddd1)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Phone number", text: $phoneNumber1)
+                    TextField("Phone number", text: $viewModel.phoneNumber1)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .multilineTextAlignment(.center)
-                    //keyboardType(.decimalPad)
                 }
                 HStack {
-                    TextField("(DDD)", text: $ddd2)
+                    TextField("(DDD)", text: $viewModel.ddd2)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Phone number", text: $phoneNumber2)
+                    TextField("Phone number", text: $viewModel.phoneNumber2)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .multilineTextAlignment(.center)
                 }
                 
                 VStack {
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Button(action: saveAction, label: {
                         Text("Salvar") //ALterar para ButtonStyle
                     })
                 }.padding()
@@ -59,18 +65,28 @@ struct CardView: View {
                 
             if card.id == 6 {
                 VStack {
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Button(action: dismissAction, label: {
                         Text("Entendi") //ALterar para ButtonStyle
                     })
                 }.padding()
             }
                 
-        }.padding()
+        }
+        .padding()
+        .keyboardType(.phonePad)
     }
 }
 
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardView(card: allCards[5])
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+#endif
+
+//struct CardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CardView(card: allCards[5], viewModel: .init())
+//    }
+//}
