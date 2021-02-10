@@ -57,10 +57,9 @@ class MainViewController: UIViewController {
     }
     
     @objc func callToFriend(recognizer: UITapGestureRecognizer) {
-        print("triple tap")
-     
-        //Pega a localização e envia um sms
-        //Liga
+        print(MainViewModel.currentModel.call("85988996971"))
+        
+        //Saber se a ligação terminou, dá um intervalo e ligar para o segundo amigo
     }
     
     @objc func callToPolice(recognizer: UILongPressGestureRecognizer) {

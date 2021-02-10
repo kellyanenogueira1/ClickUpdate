@@ -44,9 +44,9 @@ class MainViewModel {
     }
     
     func saveContacts(_ phoneNumber1: String, _ phoneNumber2: String) {
-        let user = User(context: context)
-        getUserName() { userName in
-            user.name = userName
+        let user = User(context: self.context)
+        getUserName { username in
+            user.name = username
         }
         
         if user.callEmergency == [] {
@@ -54,9 +54,9 @@ class MainViewModel {
             friend1.phoneNumber = phoneNumber1
             let friend2 = Friend(context: context)
             friend2.phoneNumber = phoneNumber2
-            
+
             user.addToCallEmergency([friend1, friend2])
-            
+
             do {
                 try context.save()
             } catch {
@@ -66,6 +66,16 @@ class MainViewModel {
             print("There is contacts") //chama função de editar
         }
         fetchFriends()
+    }
+    
+    func fetchUser() {
+        do {
+            let friends = try context.fetch(Friend.fetchRequest())
+            print(friends)
+        } catch {
+            print("Unable to capture contacts")
+        }
+        
     }
     
     func fetchFriends() {
@@ -84,5 +94,18 @@ class MainViewModel {
     
     func removeFriends() {
         
+    }
+    
+    func call(_ phoneNumber: String) -> Bool {
+        if !phoneNumber.isEmpty {
+            if let url = URL(string: "tel://" + phoneNumber) {
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    return true
+                }
+            }
+        }
+
+        return false
     }
 }
