@@ -58,6 +58,7 @@ class MainViewController: UIViewController {
     
     @objc func callToFriend(recognizer: UITapGestureRecognizer) {
         print(MainViewModel.currentModel.call("85988996971"))
+        sentSMS("85988996971")
         
         //Saber se a ligação terminou, dá um intervalo e ligar para o segundo amigo
     }

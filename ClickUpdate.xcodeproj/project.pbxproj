@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BBB108E25D415A600732D92 /* MessageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB108D25D415A600732D92 /* MessageExtension.swift */; };
 		0BD06D4625CF3785006D74B1 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD06D4225CF3785006D74B1 /* Friend.swift */; };
 		0BD06D4825CF3785006D74B1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD06D4425CF3785006D74B1 /* User.swift */; };
 		0BD06D4925CF3785006D74B1 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD06D4525CF3785006D74B1 /* User+CoreData.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BBB108D25D415A600732D92 /* MessageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageExtension.swift; sourceTree = "<group>"; };
 		0BD06D4225CF3785006D74B1 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		0BD06D4425CF3785006D74B1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0BD06D4525CF3785006D74B1 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				0BEF4DF425CD86D300B6FE8C /* MainViewController.swift */,
+				0BBB108D25D415A600732D92 /* MessageExtension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				0BD06D6525D34B77006D74B1 /* CardViewModel.swift in Sources */,
 				0BEF4E3D25CED00D00B6FE8C /* CardView.swift in Sources */,
 				0BEF4DF325CD86D300B6FE8C /* SceneDelegate.swift in Sources */,
+				0BBB108E25D415A600732D92 /* MessageExtension.swift in Sources */,
 				0BD06D6B25D3533A006D74B1 /* StringExtension.swift in Sources */,
 				0BD06D6025CF39C7006D74B1 /* MainViewModel.swift in Sources */,
 			);
