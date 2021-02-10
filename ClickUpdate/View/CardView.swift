@@ -7,23 +7,14 @@
 
 import SwiftUI
 
-class CardViewModel: ObservableObject {
-    @Published var phoneNumber1: String = ""
-    @Published var ddd1: String = ""
-    @Published var phoneNumber2: String = ""
-    @Published var ddd2: String = ""
-}
-
 struct CardView: View {
     
     var card: Card
-    
-    @ObservedObject var viewModel: CardViewModel
+    @ObservedObject var viewModel = CardViewModel()
 
     var dismissAction: () -> Void
     var saveAction: () -> Void
     
-
     var body: some View {
         VStack {
             Image(card.image)
@@ -40,6 +31,7 @@ struct CardView: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
                 .padding()
+            
             if card.id == 4 {
                 HStack {
                     TextField("(DDD)", text: $viewModel.ddd1)
@@ -62,7 +54,7 @@ struct CardView: View {
                     })
                 }.padding()
             }
-                
+            
             if card.id == 6 {
                 VStack {
                     Button(action: dismissAction, label: {

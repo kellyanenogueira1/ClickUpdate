@@ -12,13 +12,6 @@ import CoreData
 
 class MainViewController: UIViewController {
     
-//    let persistentStore: NSPersistentContainer = {
-//            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-//            let container = appDelegate?.persistentContainer
-//            guard let persistentContainer = container else { fatalError() }
-//            return persistentContainer
-//    }()
-    
     let viewModel = CardViewModel()
     
     override func viewDidLoad() {
@@ -32,18 +25,7 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         //fetchUser()
     }
-    
-//    func fetchUser() {
-//        MainViewModel.currentModel.fetchAllUsers { result in
-//            switch result {
-//            case .success(let data):
-//                print(data)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-    
+
     func isNewUser() -> Bool{
         return !UserDefaults.standard.bool(forKey: "isNewUser")
     }
@@ -62,28 +44,16 @@ class MainViewController: UIViewController {
     }
     
     func onSave() {
-        if check(viewModel.ddd1, viewModel.phoneNumber2) && check(viewModel.ddd2, viewModel.phoneNumber2) {
-            let friendOne = "\(viewModel.ddd1)\(viewModel.phoneNumber1)"
-            let friendTwo = "\(viewModel.ddd2)\(viewModel.phoneNumber2)"
+        let friendOne = "\(viewModel.ddd1)\(viewModel.phoneNumber1)"
+        let friendTwo = "\(viewModel.ddd2)\(viewModel.phoneNumber2)"
+        
+        if (friendOne.isNumeric && friendTwo.isNumeric) {
             MainViewModel.currentModel.saveContacts(friendOne, friendTwo)
-            
         } else {
-            print("Incorrect!") //alert de contato incompleto
+            let alert = UIAlertController(title: "Aviso", message: "Contato incorreto", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Tente Novamente", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)//print("Incorrect!") //alert de contato incompleto
         }
-    }
-    
-    func check(_ str1: String, _ str2: String) -> Bool {
-        let characters = ["*",";",",","#"]
-        if str1.count == 2 && str2.count == 9 {
-            let strings = "\(str1)\(str2)"
-            for character in characters {
-                if !(strings.contains(character)){
-                    return true
-                }
-                return false
-            }
-        }
-        return false
     }
     
     @objc func callToFriend(recognizer: UITapGestureRecognizer) {

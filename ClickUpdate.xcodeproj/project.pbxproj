@@ -11,6 +11,8 @@
 		0BD06D4825CF3785006D74B1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD06D4425CF3785006D74B1 /* User.swift */; };
 		0BD06D4925CF3785006D74B1 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD06D4525CF3785006D74B1 /* User+CoreData.swift */; };
 		0BD06D6025CF39C7006D74B1 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD06D5F25CF39C7006D74B1 /* MainViewModel.swift */; };
+		0BD06D6525D34B77006D74B1 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD06D6425D34B77006D74B1 /* CardViewModel.swift */; };
+		0BD06D6B25D3533A006D74B1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD06D6A25D3533A006D74B1 /* StringExtension.swift */; };
 		0BEF4DF125CD86D300B6FE8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF4DF025CD86D300B6FE8C /* AppDelegate.swift */; };
 		0BEF4DF325CD86D300B6FE8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF4DF225CD86D300B6FE8C /* SceneDelegate.swift */; };
 		0BEF4DF525CD86D300B6FE8C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF4DF425CD86D300B6FE8C /* MainViewController.swift */; };
@@ -48,6 +50,8 @@
 		0BD06D4425CF3785006D74B1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0BD06D4525CF3785006D74B1 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		0BD06D5F25CF39C7006D74B1 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		0BD06D6425D34B77006D74B1 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		0BD06D6A25D3533A006D74B1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		0BEF4DED25CD86D300B6FE8C /* ClickUpdate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClickUpdate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BEF4DF025CD86D300B6FE8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BEF4DF225CD86D300B6FE8C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BD06D6925D352F4006D74B1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0BD06D6A25D3533A006D74B1 /* StringExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		0BEF4DE425CD86D300B6FE8C = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +137,7 @@
 				0BEF4E2725CD881900B6FE8C /* View */,
 				0BEF4E2925CD883900B6FE8C /* Controller */,
 				0BEF4E2825CD882300B6FE8C /* ViewModel */,
+				0BD06D6925D352F4006D74B1 /* Utils */,
 				0BEF4DF025CD86D300B6FE8C /* AppDelegate.swift */,
 				0BEF4DF225CD86D300B6FE8C /* SceneDelegate.swift */,
 				0BEF4DFC25CD86D400B6FE8C /* Assets.xcassets */,
@@ -178,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				0BD06D5F25CF39C7006D74B1 /* MainViewModel.swift */,
+				0BD06D6425D34B77006D74B1 /* CardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -336,8 +350,10 @@
 				0BEF4E3825CECB2800B6FE8C /* Card.swift in Sources */,
 				0BD06D4925CF3785006D74B1 /* User+CoreData.swift in Sources */,
 				0BEF4DF125CD86D300B6FE8C /* AppDelegate.swift in Sources */,
+				0BD06D6525D34B77006D74B1 /* CardViewModel.swift in Sources */,
 				0BEF4E3D25CED00D00B6FE8C /* CardView.swift in Sources */,
 				0BEF4DF325CD86D300B6FE8C /* SceneDelegate.swift in Sources */,
+				0BD06D6B25D3533A006D74B1 /* StringExtension.swift in Sources */,
 				0BD06D6025CF39C7006D74B1 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,12 +18,6 @@ class MainViewModel {
     
     static var currentModel = MainViewModel()
     
-    enum error: Error {
-        case requestNotAccepted
-        case notFoundUserId
-        case withoutUserIdentity
-    }
-    
     init() {
         container = CKContainer.init(identifier: "iCloud.com.kellyanenogueira.ClickUpdate")
         database = container.privateCloudDatabase
@@ -49,30 +43,6 @@ class MainViewModel {
         }
     }
     
-//    func fetchAllUsers(_ completion: @escaping (Result<String, Error>) -> Void) {
-//        let predicate = NSPredicate(value: true)
-//        let query = CKQuery(recordType: "CD_User", predicate: predicate)
-//
-//        database.perform(query, inZoneWith: CKRecordZone.init(zoneName: "com.apple.coredata.cloudkit.zone").zoneID) { result, error in
-//
-//            if let falha = error {
-//                DispatchQueue.main.async {
-//                    completion(.failure(falha))
-//                }
-//            }
-//
-//            guard let arrayCKRecordUsers = result else { return}
-//
-//            arrayCKRecordUsers.forEach {
-//                self.getUserName(withRecordID: $0.recordID) { result in
-//                    DispatchQueue.main.async {
-//                        completion(.success(result))
-//                    }
-//                }
-//            }
-//        }
-//    }
-    
     func saveContacts(_ phoneNumber1: String, _ phoneNumber2: String) {
         let user = User(context: context)
         getUserName() { userName in
@@ -93,7 +63,7 @@ class MainViewModel {
                 print("Unable to save contacts")
             }
         } else {
-            print("já tem contatos") //chama função de editar
+            print("There is contacts") //chama função de editar
         }
         fetchFriends()
     }
