@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var viewModel: CardViewModel
+    
     @State var selectedPage: Int = 0
     
+    var dismissAction: () -> Void
+    var saveAction: () -> Void
     
     var body: some View {
         TabView(selection: $selectedPage) {
             ForEach(0..<allCards.count) { index in
-                CardView(card: allCards[index]).tag(index)
+                CardView(card: allCards[index], viewModel: viewModel, dismissAction: dismissAction, saveAction: saveAction).tag(index)
             }
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
@@ -22,8 +27,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(viewModel: .init())
+//    }
+//}

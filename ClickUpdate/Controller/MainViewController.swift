@@ -7,36 +7,83 @@
 
 import UIKit
 import SwiftUI
+import CloudKit
+import CoreData
 
 class MainViewController: UIViewController {
-
+    
+    let viewModel = CardViewModel()
+    let mainViewModel = MainViewModel()
+    var address = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         gestures()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       // getLocation()
+       // MainViewModel.currentModel.fetchFriends()
+    }
+
     func isNewUser() -> Bool{
         return !UserDefaults.standard.bool(forKey: "isNewUser")
     }
     
     override func viewWillLayoutSubviews() {
-        if isNewUser() {
-            let onboarding = UIHostingController(rootView: ContentView())
+        let teste = true
+        if teste { //isNewUser() {
+            let onboarding = UIHostingController(rootView: ContentView(viewModel: viewModel, dismissAction: onDismiss, saveAction: onSave))
             self.present(onboarding, animated: true, completion: nil)
+            onboarding.isModalInPresentation = true
         }
         UserDefaults.standard.set(true, forKey: "isNewUser")
     }
     
+    func checkNumber(_ ddd1: String, _ ddd2: String, _ phone1: String, _ phone2: String) -> Bool {
+        if (ddd1.count == 2 && ddd2.count == 2) && (phone1.count == 9 && phone2.count == 9) {
+            if ddd1.isNumeric && ddd2.isNumeric && phone1.isNumeric && phone2.isNumeric {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func onDismiss() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func onSave() {
+        let friendOne = "\(viewModel.ddd1)\(viewModel.phoneNumber1)"
+        let friendTwo = "\(viewModel.ddd2)\(viewModel.phoneNumber2)"
+        let sizeOk = checkNumber(viewModel.ddd1, viewModel.ddd2, viewModel.phoneNumber1, viewModel.phoneNumber2)
+        
+        if sizeOk {
+            viewModel.didSave = true
+            mainViewModel.saveContacts(friendOne, friendTwo)
+        } else {
+            viewModel.alert = true
+        }
+    }
+    
     @objc func callToFriend(recognizer: UITapGestureRecognizer) {
-        print("triple tap")
-        //Pega a localização e envia um sms
-        //Liga
+        let friends = mainViewModel.fetchFriends()
+        let user = friends[0].user
+        mainViewModel.call("\(friends[0].phoneNumber)")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.sentSMS("\(user?.name)","\(friends[0].phoneNumber)")
+        }
+
+        //Saber se a ligação terminou, dá um intervalo e ligar para o segundo amigo
     }
     
     @objc func callToPolice(recognizer: UILongPressGestureRecognizer) {
-        print("press")
-        //
+        mainViewModel.call("190")
+        
     }
     
     func gestures() {
@@ -48,8 +95,6 @@ class MainViewController: UIViewController {
         view.addGestureRecognizer(press)
         view.addGestureRecognizer(tap)
     }
-
-
 
 }
 
