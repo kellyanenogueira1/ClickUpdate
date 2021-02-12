@@ -10,10 +10,10 @@ import MessageUI
 
 extension MainViewController: MFMessageComposeViewControllerDelegate {
     
-    func sentSMS(_ phoneNumber: String){
+    func sentSMS(_ from: String, _ phoneNumber: String){
         if (MFMessageComposeViewController.canSendText()) {
             let controller = MFMessageComposeViewController()
-            controller.body = "Esta é uma mensagem!"
+            controller.body = "Estou em uma situação de risco e preciso de ajuda. Minha localização é: \(self.address)"
             controller.recipients = [phoneNumber]
             controller.messageComposeDelegate = self
             self.present(controller, animated: true, completion: nil)

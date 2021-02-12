@@ -13,6 +13,8 @@ import CoreData
 class MainViewController: UIViewController {
     
     let viewModel = CardViewModel()
+    let mainViewModel = MainViewModel()
+    var address = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,8 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //fetchUser()
+       // getLocation()
+       // MainViewModel.currentModel.fetchFriends()
     }
 
     func isNewUser() -> Bool{
@@ -35,8 +38,18 @@ class MainViewController: UIViewController {
         if teste { //isNewUser() {
             let onboarding = UIHostingController(rootView: ContentView(viewModel: viewModel, dismissAction: onDismiss, saveAction: onSave))
             self.present(onboarding, animated: true, completion: nil)
+            onboarding.isModalInPresentation = true
         }
         UserDefaults.standard.set(true, forKey: "isNewUser")
+    }
+    
+    func checkNumber(_ ddd1: String, _ ddd2: String, _ phone1: String, _ phone2: String) -> Bool {
+        if (ddd1.count == 2 && ddd2.count == 2) && (phone1.count == 9 && phone2.count == 9) {
+            if ddd1.isNumeric && ddd2.isNumeric && phone1.isNumeric && phone2.isNumeric {
+                return true
+            }
+        }
+        return false
     }
     
     func onDismiss() {
@@ -46,26 +59,31 @@ class MainViewController: UIViewController {
     func onSave() {
         let friendOne = "\(viewModel.ddd1)\(viewModel.phoneNumber1)"
         let friendTwo = "\(viewModel.ddd2)\(viewModel.phoneNumber2)"
+        let sizeOk = checkNumber(viewModel.ddd1, viewModel.ddd2, viewModel.phoneNumber1, viewModel.phoneNumber2)
         
-        if (friendOne.isNumeric && friendTwo.isNumeric) {
-            MainViewModel.currentModel.saveContacts(friendOne, friendTwo)
+        if sizeOk {
+            viewModel.didSave = true
+            mainViewModel.saveContacts(friendOne, friendTwo)
         } else {
-            let alert = UIAlertController(title: "Aviso", message: "Contato incorreto", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Tente Novamente", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)//print("Incorrect!") //alert de contato incompleto
+            viewModel.alert = true
         }
     }
     
     @objc func callToFriend(recognizer: UITapGestureRecognizer) {
-        print(MainViewModel.currentModel.call("85988996971"))
-        sentSMS("85988996971")
+        let friends = mainViewModel.fetchFriends()
+        let user = friends[0].user
+        mainViewModel.call("\(friends[0].phoneNumber)")
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.sentSMS("\(user?.name)","\(friends[0].phoneNumber)")
+        }
+
         //Saber se a ligação terminou, dá um intervalo e ligar para o segundo amigo
     }
     
     @objc func callToPolice(recognizer: UILongPressGestureRecognizer) {
-        print("press")
-        //
+        mainViewModel.call("190")
+        
     }
     
     func gestures() {

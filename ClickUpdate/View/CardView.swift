@@ -27,35 +27,38 @@ struct CardView: View {
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
             Text(card.description)
-                .lineLimit(7)
+                .lineLimit(8)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
                 .padding()
             
-            if card.id == 4 {
+            if card.id == 2 {
                 HStack {
                     TextField("(DDD)", text: $viewModel.ddd1)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     TextField("Phone number", text: $viewModel.phoneNumber1)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .multilineTextAlignment(.center)
-                }
+                }.disabled(viewModel.didSave)
                 HStack {
                     TextField("(DDD)", text: $viewModel.ddd2)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     TextField("Phone number", text: $viewModel.phoneNumber2)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .multilineTextAlignment(.center)
-                }
+                }.disabled(viewModel.didSave)
                 
                 VStack {
                     Button(action: saveAction, label: {
                         Text("Salvar") //ALterar para ButtonStyle
-                    })
+                    }).disabled(viewModel.didSave)
+                    .alert(isPresented: $viewModel.alert) {
+                        Alert(title: Text("Ops!"), message: Text("Contato Incorreto"), dismissButton: .default(Text("Tente Novamente")))
+                    }
                 }.padding()
             }
             
-            if card.id == 6 {
+            if card.id == 4 {
                 VStack {
                     Button(action: dismissAction, label: {
                         Text("Entendi") //ALterar para ButtonStyle
@@ -66,6 +69,7 @@ struct CardView: View {
         }
         .padding()
         .keyboardType(.phonePad)
+        
     }
 }
 

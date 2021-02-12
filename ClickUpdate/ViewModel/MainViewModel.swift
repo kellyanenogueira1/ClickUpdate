@@ -16,7 +16,7 @@ class MainViewModel {
     let database: CKDatabase
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    static var currentModel = MainViewModel()
+   // static var currentModel = MainViewModel()
     
     init() {
         container = CKContainer.init(identifier: "iCloud.com.kellyanenogueira.ClickUpdate")
@@ -44,52 +44,51 @@ class MainViewModel {
     }
     
     func saveContacts(_ phoneNumber1: String, _ phoneNumber2: String) {
-        let user = User(context: self.context)
+        let user = User(context: context)
         getUserName { username in
             user.name = username
         }
-        
-        if user.callEmergency == [] {
-            let friend1 = Friend(context: context)
-            friend1.phoneNumber = phoneNumber1
-            let friend2 = Friend(context: context)
-            friend2.phoneNumber = phoneNumber2
+        let friend1 = Friend(context: context)
+        friend1.phoneNumber = phoneNumber1
+        let friend2 = Friend(context: context)
+        friend2.phoneNumber = phoneNumber2
 
-            user.addToCallEmergency([friend1, friend2])
-
-            do {
-                try context.save()
-            } catch {
-                print("Unable to save contacts")
-            }
-        } else {
-            print("There is contacts") //chama função de editar
+        user.addToCallEmergency([friend1, friend2])
+        do {
+            try context.save()
+        } catch {
+            print("Unable to save contacts")
         }
-        fetchFriends()
     }
     
-    func fetchUser() {
+    func fetchUser(_ username: String) -> User {
+        let request = User.fetchRequest() as NSFetchRequest<User>
+        let pred = NSPredicate(format: "name CONTAINS '\(username)'")
+        request.predicate = pred
+       
+        let user = try! self.context.fetch(request)
+        DispatchQueue.main.async {
+            print(user)
+        }
+        return user[0]
+        
+    }
+    
+    func fetchFriends() -> [Friend] {
+        var friends: [Friend] = []
         do {
-            let friends = try context.fetch(Friend.fetchRequest())
+            friends = try context.fetch(Friend.fetchRequest())
             print(friends)
         } catch {
             print("Unable to capture contacts")
         }
-        
-    }
-    
-    func fetchFriends() {
-        do {
-            let friends = try context.fetch(Friend.fetchRequest())
-            print(friends)
-        } catch {
-            print("Unable to capture contacts")
-        }
-        
+        return friends
     }
     
     func updateFriends(_ phoneNumber1: String, _ phoneNumber2: String) {
-        
+        // Pegar o user
+        //Pegar amigos de user user.callEmergency
+        //Substituir friends
     }
     
     func removeFriends() {
