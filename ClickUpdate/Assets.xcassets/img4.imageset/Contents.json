@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "discretCircle.pdf",
+      "filename" : "attention.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "img4.pdf",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "img4-1.pdf",
       "idiom" : "universal",
       "scale" : "3x"
     }

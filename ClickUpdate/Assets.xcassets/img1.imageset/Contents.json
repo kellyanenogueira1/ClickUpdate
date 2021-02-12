@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "discretCircle.pdf",
+      "filename" : "Escudo.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "img3.pdf",
+      "filename" : "Escudo@2x.pdf",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "img3 3x.pdf",
+      "filename" : "Escudo@3x.pdf",
       "idiom" : "universal",
       "scale" : "3x"
     }

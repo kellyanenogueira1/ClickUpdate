@@ -66,9 +66,7 @@ class MainViewModel {
         request.predicate = pred
        
         let user = try! self.context.fetch(request)
-        DispatchQueue.main.async {
-            print(user)
-        }
+  
         return user[0]
         
     }
@@ -77,7 +75,6 @@ class MainViewModel {
         var friends: [Friend] = []
         do {
             friends = try context.fetch(Friend.fetchRequest())
-            print(friends)
         } catch {
             print("Unable to capture contacts")
         }

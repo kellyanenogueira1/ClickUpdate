@@ -35,8 +35,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        let teste = true
-        if teste { //isNewUser() {
+        if isNewUser() {
             let onboarding = UIHostingController(rootView: ContentView(viewModel: viewModel, dismissAction: onDismiss, saveAction: onSave))
             self.present(onboarding, animated: true, completion: nil)
             onboarding.isModalInPresentation = true
@@ -82,10 +81,10 @@ class MainViewController: UIViewController {
     @objc func callToFriend(recognizer: UITapGestureRecognizer) {
         let friends = mainViewModel.fetchFriends()
         let user = friends[0].user
-        mainViewModel.call("\(friends[0].phoneNumber)")
+        mainViewModel.call("\(friends[0].phoneNumber ?? "190")")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.sentSMS("\(user?.name)","\(friends[0].phoneNumber)")
+            self.sentSMS("\(user!.name ?? "")","\(friends[0].phoneNumber!)")
         }
 
         //Saber se a ligação terminou, dá um intervalo e ligar para o segundo amigo

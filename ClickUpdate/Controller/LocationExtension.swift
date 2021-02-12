@@ -12,7 +12,6 @@ extension MainViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locationValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locationValue.latitude) \(locationValue.longitude)")
         
         let location: CLLocation = CLLocation(latitude: locationValue.latitude, longitude: locationValue.longitude)
         convertingToAddress(location)
@@ -32,12 +31,7 @@ extension MainViewController: CLLocationManagerDelegate {
             let myPlacemarks = placemarks! as [CLPlacemark]
             if myPlacemarks.count > 0 {
                 let pm = placemarks![0]
-                self.address = "\(pm.country)"
-                print(pm.locality)
-                print(pm.subLocality)
-                print(pm.thoroughfare)
-                print(pm.postalCode)
-                print(pm.subThoroughfare)
+                self.address = "\(pm.locality ?? "")/\(pm.subLocality ?? "") - \(pm.thoroughfare ?? "") \(pm.subThoroughfare ?? ""), \(pm.postalCode ?? "")"
             }
         })
     }
