@@ -40,13 +40,6 @@ struct CardView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .multilineTextAlignment(.center)
                 }.disabled(viewModel.didSave)
-                HStack {
-                    TextField("(DDD)", text: $viewModel.ddd2)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Phone number", text: $viewModel.phoneNumber2)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .multilineTextAlignment(.center)
-                }.disabled(viewModel.didSave)
                 
                 VStack {
                     Button(action: saveAction, label: {

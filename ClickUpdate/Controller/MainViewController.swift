@@ -9,12 +9,14 @@ import UIKit
 import SwiftUI
 import CloudKit
 import CoreData
+import CoreLocation
 
 class MainViewController: UIViewController {
     
     let viewModel = CardViewModel()
     let mainViewModel = MainViewModel()
     var address = ""
+    private var locationManager: CLLocationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +27,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       // getLocation()
-       // MainViewModel.currentModel.fetchFriends()
+        getLocation()
     }
 
     func isNewUser() -> Bool{
@@ -43,9 +44,9 @@ class MainViewController: UIViewController {
         UserDefaults.standard.set(true, forKey: "isNewUser")
     }
     
-    func checkNumber(_ ddd1: String, _ ddd2: String, _ phone1: String, _ phone2: String) -> Bool {
-        if (ddd1.count == 2 && ddd2.count == 2) && (phone1.count == 9 && phone2.count == 9) {
-            if ddd1.isNumeric && ddd2.isNumeric && phone1.isNumeric && phone2.isNumeric {
+    func checkNumber(_ ddd1: String, _ phone1: String) -> Bool {
+        if (ddd1.count == 2) && (phone1.count == 9) {
+            if ddd1.isNumeric && phone1.isNumeric {
                 return true
             }
         }
@@ -56,14 +57,23 @@ class MainViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func getLocation() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     func onSave() {
         let friendOne = "\(viewModel.ddd1)\(viewModel.phoneNumber1)"
-        let friendTwo = "\(viewModel.ddd2)\(viewModel.phoneNumber2)"
-        let sizeOk = checkNumber(viewModel.ddd1, viewModel.ddd2, viewModel.phoneNumber1, viewModel.phoneNumber2)
+        let sizeOk = checkNumber(viewModel.ddd1, viewModel.phoneNumber1)
         
         if sizeOk {
             viewModel.didSave = true
-            mainViewModel.saveContacts(friendOne, friendTwo)
+            mainViewModel.saveContacts(friendOne)
         } else {
             viewModel.alert = true
         }

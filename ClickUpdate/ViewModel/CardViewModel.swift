@@ -10,8 +10,6 @@ import SwiftUI
 class CardViewModel: ObservableObject {
     @Published var phoneNumber1: String = ""
     @Published var ddd1: String = ""
-    @Published var phoneNumber2: String = ""
-    @Published var ddd2: String = ""
     
     @Published var didSave = false
     @Published var alert = false
