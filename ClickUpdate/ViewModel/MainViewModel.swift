@@ -44,20 +44,34 @@ class MainViewModel {
     }
     
     func saveContacts(_ phoneNumber1: String) {
-        let user = User(context: context)
-        getUserName { [self] username in
-            user.name = username
-            let friend1 = Friend(context: context)
-            friend1.phoneNumber = phoneNumber1
+        if fetchAllUsers() == [] && fetchFriends() == [] {
+            let user = User(context: context)
+            getUserName { [self] username in
+                user.name = username
+                let friend1 = Friend(context: context)
+                friend1.phoneNumber = phoneNumber1
 
-            user.addToCallEmergency([friend1])
-            do {
-                try context.save()
-            } catch {
-                print("Unable to save contacts")
+                user.addToCallEmergency([friend1])
+                do {
+                    try context.save()
+                } catch {
+                    print("Unable to save contacts")
+                }
             }
+        } else {
+            var friends = fetchFriends()
+            friends[0].phoneNumber = phoneNumber1
         }
-        
+    }
+    
+    func fetchAllUsers()  -> [User] {
+        var users: [User] = []
+        do {
+            users = try context.fetch(User.fetchRequest())
+        } catch {
+            print("Unable to capture contacts")
+        }
+        return users
     }
     
     func fetchUser(_ username: String) -> User {

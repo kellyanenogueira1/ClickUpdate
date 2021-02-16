@@ -13,7 +13,7 @@ extension MainViewController: MFMessageComposeViewControllerDelegate {
     func sentSMS(_ from: String, _ phoneNumber: String){
         if (MFMessageComposeViewController.canSendText()) {
             let controller = MFMessageComposeViewController()
-            controller.body = "Estou em uma situação de risco e preciso de ajuda. Minha localização é: \(self.address)\n\n Enviado de: \(from)"
+            controller.body = "Estou em uma situação de risco e preciso de ajuda. \(self.address)\n\n Enviado de: \(from)"
             controller.recipients = [phoneNumber]
             controller.messageComposeDelegate = self
             self.present(controller, animated: true, completion: nil)
