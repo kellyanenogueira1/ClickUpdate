@@ -83,7 +83,7 @@ class MainViewController: UIViewController {
         let user = friends[0].user
         mainViewModel.call("\(friends[0].phoneNumber ?? "190")")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.sentSMS("\(user!.name ?? "")","\(friends[0].phoneNumber!)")
         }
 
@@ -91,7 +91,12 @@ class MainViewController: UIViewController {
     }
     
     @objc func callToPolice(recognizer: UILongPressGestureRecognizer) {
+        let friends = mainViewModel.fetchFriends()
+        let user = friends[0].user
         mainViewModel.call("190")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.sentSMS("\(user!.name ?? "")","190")
+        }
         
     }
     
